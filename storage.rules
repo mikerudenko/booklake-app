@@ -1,0 +1,26 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    function isAdmin() {
+      return request.auth.token.role == 'admin'
+    }
+
+    match /users/{userId}/{allPaths=**} {
+      allow create, update: if request.auth.uid == userId && request.resource.size < 2 * 1024 * 1024
+                   && request.resource.contentType.matches('image/.*');
+      allow delete: if request.auth.uid == userId;
+      allow get: if true;
+    }
+
+    match /lakes/{allPaths=**} {
+        allow delete, write, update: if isAdmin();
+        allow get: if true;
+    }
+
+    match /internal/{allPaths=**} {
+      allow delete, write, update, get, list: if isAdmin();
+    }
+  }
+}

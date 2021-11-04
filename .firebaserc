@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "dev": "booklake-dev",
+    "prod": "booklake-prod-a2b4a",
+    "default": "booklake-dev"
+  }
+}

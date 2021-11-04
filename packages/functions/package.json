@@ -1,0 +1,22 @@
+{
+  "name": "@booklake/functions",
+  "version": "1.0.0",
+  "private": true,
+  "main": "lib/index.js",
+  "dependencies": {
+    "@booklake/core": "^1.0.6",
+    "firebase-admin": "^8.9.2",
+    "firebase-functions": "^3.3.0",
+    "lodash": "^4.17.15",
+    "rimraf": "^3.0.2",
+    "uuid": "^7.0.1"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.149",
+    "typescript": "^3.8.3"
+  },
+  "scripts": {
+    "build": "tsc -p ./tsconfig.json",
+    "lerna:clean": "rimraf lib"
+  }
+}

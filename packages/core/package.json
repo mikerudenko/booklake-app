@@ -1,0 +1,20 @@
+{
+  "name": "@booklake/core",
+  "version": "1.0.6",
+  "description": "booklake core",
+  "author": "Mike Rudenko <mihailo.rudenko.main@gmail.com>",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "repository": "git@github.com:booklake/booklake.git",
+  "dependencies": {},
+  "scripts": {
+    "postinstall": "npm run build",
+    "prebuild": "rimraf ./dist",
+    "build": "tsc",
+    "lerna:clean": "rimraf dist",
+    "lerna:build": "yarn build"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
+}

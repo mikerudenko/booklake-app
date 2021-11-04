@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+  - '10'
+script:
+  - npm run bootstrap
+  - npm run build
+  - cp .env.development booklake-web/.env
+  - cd booklake-web
+  - npm run build
+  - cd ..
+install:
+  - npm install
+  - npm install -g firebase-tools
+deploy:
+  provider: firebase
+  skip_cleanup: true
+  project: dev
+  token:
+    secure: KJJ1/xh0ebwabIRKr9St0XECKc+0hfacmdy9uRdRrlEQrd4ebs0aAiiDddYc2SbIccXFTV4gxsSv6yvzSEeX/fM3ChcrY2k7AUQHQAClGqvlLIkZZSk+TDD9mRCJp92Vd6F6dUeo9EVIDT9Dgr3PLJ9HnqLtSF8xLtHARyUJ1zD1RIIcnqo7rnN0QgdROYagDxMJ7elUG8CK/sFxEaPstTPOok8Lthe1k8gGiRfC1ZRUe4g8GHTYGNWzN08Sd0WljjiAq0GvLB0CW99R/C3Yal7RkDndYEBrg5p22SWdMmsSGK6WrPe51PbISZXRjMt9X+8LN84w36MQuyGPoYGti5lnvSost98K4DkkcF74gZs+9GUXKFKL06cNjKb8watdrMcdpO3d2CNywfVHeXtu9reLooQHpQQT/go0dBtyE9CVKDv1AAlorXfj/HKo0Z9WhpDviMT7glFR3By1ImaW3Buuu8laesktQ8KnWih2VQwS1a+ena04e86sLEh2pCv8NEQxYVDy3dqp5HX3zmA/M9b5sBWID8TmbJJy/qmrbDvvPhSnuQVT38mAslH42F1qEUoDRZM4Cqy0dtX0UnwciuZOuoqwzpC8pBesX2pAgnn7LEwFMJnafRaXwfL8mLJFpjWrtcR8nn7GaRC4JtJyucI+cr4cZJjSUDhe8ZtTO9w=

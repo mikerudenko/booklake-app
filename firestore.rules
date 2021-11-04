@@ -1,0 +1,45 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAdmin() {
+      return request.auth.token.role == 'admin'
+    }
+
+    function isManager() {
+      return request.auth.token.role == 'manager'
+    }
+
+    function isUser() {
+      return request.auth.token.role == 'user'
+    }
+
+    match /users/{userId} {
+      allow create, updata, delete :if isAdmin() || request.auth == null && request.resource.data.role == "user";
+      allow get, list: if isAdmin()
+    }
+
+    match /lakes/{allPaths=**} {
+      allow delete, write, update, create: if isAdmin();
+      allow get, list: if true;
+    }
+
+     match /lakes/{id}/orders/ {
+      allow create, update, delete: if isAdmin() || isManager();
+      allow get, list: if true;
+    }
+    
+    match /creditCards/{allPaths=**} {
+      allow delete, write, update, get, list: if isAdmin();
+    }
+
+    match /features/{allPaths=**} {
+      allow delete, write, update: if isAdmin() || isManager();
+      allow get, list: if true;
+    }
+
+    match /rbac/{allPaths=**} {
+      allow delete, write, update, get, list: if isAdmin();
+    }
+  }
+}
