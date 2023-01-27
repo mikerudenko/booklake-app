@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.com/mikerudenko/BookLake.svg?token=NzGBdpmY6SmMTmyrEqkp&branch=master)](https://travis-ci.com/mikerudenko/BookLake)
+
+## 🐟🎣🐠 App for finding fishing place and book it
 
 First of all you need to install:
 
